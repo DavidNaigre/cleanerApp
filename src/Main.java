@@ -1,5 +1,6 @@
 import function.Tweet;
 
+import static function.Analyse.Analyse;
 import static function.ReadData.read;
 import static function.formatTime.formatTime;
 import static function.WriteData.write;
@@ -15,7 +16,10 @@ public class Main {
         System.out.println("\n> Traitement a démarré");
         ArrayList<Tweet> data = read(pathList.get(0));
         long end_read = System.currentTimeMillis();
-        String log = '['+"fichier analysée: "+pathList.get(0)+" || \timportations en: "+ formatTime(end_read-start)+" || \ttraité en: "+formatTime(end_read-start)+"]";
+        data = Analyse(data);
+        long end = System.currentTimeMillis();
+        System.out.println(">Total final: "+data.size());
+        String log = "\n>[fichier analysée: "+pathList.get(0)+" || \timportations en: "+ formatTime(end_read-start)+" || \ttraité en: "+formatTime(end-start)+"]";
         System.out.println(log);
     }
 }
