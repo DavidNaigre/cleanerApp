@@ -13,13 +13,16 @@ public class Main {
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
-        System.out.println("\n> Traitement a démarré");
-        ArrayList<Tweet> data = read(pathList.get(0));
+        System.out.println(">Traitement a démarré");
+        ArrayList<Tweet> data = read(pathList);
         long end_read = System.currentTimeMillis();
         data = Analyse(data);
         long end = System.currentTimeMillis();
-        System.out.println(">Total final: "+data.size());
-        String log = "\n>[fichier analysée: "+pathList.get(0)+" || \timportations en: "+ formatTime(end_read-start)+" || \ttraité en: "+formatTime(end-start)+"]";
+        long countBiden = data.stream().filter(tweet -> tweet.getFrom().contains("biden")).count();
+        long countTrump =  data.size() - countBiden;
+        System.out.println("\n>Total final: "+data.size()+"\n\tfrom biden: "+countBiden+"\n\tfrom trump: "+countTrump);
+        write(data);
+        String log = "\n[importations en: "+ formatTime(end_read-start)+" || \ttraité en: "+formatTime(end-start)+"]";
         System.out.println(log);
     }
 }
