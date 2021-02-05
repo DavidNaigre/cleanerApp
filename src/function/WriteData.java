@@ -10,7 +10,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class WriteData {
-    private final static String[] HEADERS = {"created_at","tweet_id","tweet","likes","retweet_count","source","user_id","user_name","user_screen_name","user_description","user_join_date","user_followers_count","user_location","lat","long","city","country","continent","state","state_code","collected_at","ORIGIN"};
+    private final static String[] HEADERS = {"created_at","tweet_id","tweet","likes","retweet_count","source","user_id","user_name","user_screen_name","user_description","user_join_date","user_followers_count","user_location","lat","long","city","country","continent","state","state_code","collected_at","ORIGIN","sexe","polarity","subjectivity"};
 
     public static void write(ArrayList<Tweet> data) {
         try {
@@ -39,7 +39,10 @@ public class WriteData {
                             tweet.getState(),
                             tweet.getState_code(),
                             tweet.getCollected_at(),
-                            tweet.getFrom());
+                            tweet.getFrom(),
+                            "",
+                            "",
+                            "");
             }
             csvPrinter.flush();
             writer.close();

@@ -16,14 +16,16 @@ public class formatTime {
         millis -= TimeUnit.MINUTES.toMillis(minutes);
         long seconds = TimeUnit.MILLISECONDS.toSeconds(millis);
 
-        String sb = days +
-                " Days " +
-                hours +
-                " Hours " +
-                minutes +
-                " Minutes " +
-                seconds +
-                " Seconds";
-        return(sb);
+        StringBuilder sb = new StringBuilder(64);
+        sb.append(days);
+        sb.append(" Days ");
+        sb.append(hours);
+        sb.append(" Hours ");
+        sb.append(minutes);
+        sb.append(" Minutes ");
+        sb.append(seconds);
+        sb.append(" Seconds");
+
+        return(sb.toString());
     }
 }
